@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/json-placeholder-interview-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

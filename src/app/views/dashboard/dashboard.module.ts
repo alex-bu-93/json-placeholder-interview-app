@@ -1,5 +1,5 @@
 import { NgModule }               from '@angular/core';
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardRoutingModule } from './dashboard.routing.module';
 import { DashboardComponent }     from './dashboard.component';
 
 @NgModule({

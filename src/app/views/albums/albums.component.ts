@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { GridOptions }                        from 'ag-grid-community';
-import { PostsService }                       from './posts.service';
+import { AlbumsService }                      from './albums.service';
 
 const GRID_OPTIONS: GridOptions = {
   animateRows: true,
@@ -17,23 +17,22 @@ const GRID_OPTIONS: GridOptions = {
   columnDefs: [
     {field: 'id', headerName: 'ID', filter: 'agNumberColumnFilter', width: 110, minWidth: 72},
     {field: 'userId', headerName: 'User ID', filter: 'agNumberColumnFilter', width: 142, minWidth: 100},
-    {field: 'title', headerName: 'Title', filter: 'agTextColumnFilter', minWidth: 300, flex: 1},
-    {field: 'body', headerName: 'Body', filter: 'agTextColumnFilter', minWidth: 300, flex: 1}
+    {field: 'title', headerName: 'Title', filter: 'agTextColumnFilter', minWidth: 300, flex: 1}
   ]
 };
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-posts',
-  templateUrl: './posts.component.html'
+  selector: 'app-albums',
+  templateUrl: './albums.component.html'
 })
-export class PostsComponent {
+export class AlbumsComponent {
 
   gridOptions = GRID_OPTIONS;
-  posts$ = this.postsService.getPosts$();
+  albums$ = this.albumsService.getAlbums$();
 
   constructor(
-    private postsService: PostsService
+    private albumsService: AlbumsService
   ) {
   }
 }

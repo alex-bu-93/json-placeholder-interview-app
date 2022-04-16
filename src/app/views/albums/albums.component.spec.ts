@@ -3,18 +3,18 @@ import { RequestWrapperComponent }          from '@widgets/request-wrapper';
 import { GridComponent }                    from '@widgets/grid';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { of }                               from 'rxjs';
-import { PostsComponent }                   from './posts.component';
-import { PostsService }                     from './posts.service';
-import { PostsModule }                      from './posts.module';
+import { AlbumsComponent }                  from './albums.component';
+import { AlbumsModule }                     from './albums.module';
+import { AlbumsService }                    from './albums.service';
 
-const FAKE_POSTS = Array.from({length: 5}).map((x, i) => ({userId: i, id: i, title: 't' + i, body: 'b' + i}));
+const FAKE_ALBUMS = Array.from({length: 5}).map((x, i) => ({userId: i, id: i, title: 't' + i}));
 
-describe('PostsComponent', () => {
+describe('AlbumsComponent', () => {
 
-  let fixture: ComponentFixture<PostsComponent>;
+  let fixture: ComponentFixture<AlbumsComponent>;
 
-  beforeEach(() => MockBuilder(PostsComponent, PostsModule).mock(PostsService, {getPosts$: () => of(FAKE_POSTS)}));
-  beforeEach(() => fixture = MockRender(PostsComponent));
+  beforeEach(() => MockBuilder(AlbumsComponent, AlbumsModule).mock(AlbumsService, {getAlbums$: () => of(FAKE_ALBUMS)}));
+  beforeEach(() => fixture = MockRender(AlbumsComponent));
 
   it('should create', () => {
     expect(fixture.componentInstance).toBeTruthy();
@@ -28,8 +28,8 @@ describe('PostsComponent', () => {
     expect(ngMocks.find(GridComponent).componentInstance).toBeTruthy();
   });
 
-  it('request wrapper should get posts observable', () => {
-    ngMocks.find(RequestWrapperComponent).componentInstance.request$.subscribe(res => expect(res).toEqual(FAKE_POSTS));
+  it('request wrapper should get albums observable', () => {
+    ngMocks.find(RequestWrapperComponent).componentInstance.request$.subscribe(res => expect(res).toEqual(FAKE_ALBUMS));
   });
 
   it('app grid should get gridOptions', () => {

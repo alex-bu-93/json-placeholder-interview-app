@@ -3,7 +3,8 @@ import { MOBILE_BREAKPOINT }                                from './layout.const
 
 const LAYOUT_ROUTES = [
   {url: 'dashboard', label: 'Dashboard', icon: 'dashboard'},
-  {url: 'posts', label: 'Posts', icon: 'file'}
+  {url: 'posts', label: 'Posts', icon: 'edit'},
+  {url: 'albums', label: 'Albums', icon: 'book'},
 ];
 
 @Component({

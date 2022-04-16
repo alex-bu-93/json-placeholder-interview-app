@@ -1,0 +1,7 @@
+@import '~ag-grid-community/src/styles/ag-grid';
+@import '~ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin';
+
+.ag-theme-alpine {
+  @include ag-theme-alpine((cell-horizontal-border: solid ag-derived(secondary-border-color)));
+  .ag-body-viewport { background-color: #f0f2f5 }
+}

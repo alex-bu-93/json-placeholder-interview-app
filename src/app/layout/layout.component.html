@@ -19,29 +19,28 @@
   <nz-layout>
     <nz-header class="px-0">
       <div class="container-fluid align-items-center d-flex h-100">
-        <ng-container *ngIf="isMobile">
-          <button nz-button style="background-color: inherit" class="border-0">
-            <i nz-icon
-               class="text-white"
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-               (click)="isCollapsed = !isCollapsed">
-            </i>
-          </button>
-          <p nz-typography nzEllipsis nzContent="JSON Placeholder Interview App"
-             class="text-white mb-0">
-          </p>
-        </ng-container>
+        <button *ngIf="isMobile" nz-button style="background-color: inherit" class="border-0">
+          <i nz-icon
+             class="text-white"
+             [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+             (click)="isCollapsed = !isCollapsed">
+          </i>
+        </button>
         <nz-tabset *ngIf="!isMobile" nzLinkRouter [nzLinkExact]="false">
           <nz-tab *ngFor="let route of LAYOUT_ROUTES">
             <a *nzTabLink nz-tab-link class="text-white" [routerLink]="[route.url]">{{route.label}}</a>
           </nz-tab>
         </nz-tabset>
+        <p nz-typography nzEllipsis nzContent="JSON Placeholder Interview App"
+           class="text-white ml-auto mb-0"
+           [class.ml-auto]="!isMobile">
+        </p>
       </div>
     </nz-header>
-    <nz-content class="container-fluid py-3">
+    <nz-content class="container-fluid pt-3">
       <router-outlet></router-outlet>
     </nz-content>
-    <nz-footer>
+    <nz-footer class="text-center py-2">
       By <a href="https://github.com/alex-bu-93">alex-bu</a>
     </nz-footer>
   </nz-layout>

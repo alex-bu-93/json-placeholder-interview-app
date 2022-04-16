@@ -7,7 +7,11 @@ import { catchError, tap }                                                      
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-request-wrapper',
   templateUrl: './request-wrapper.component.html',
-  styles: [`nz-spin { min-height: 100px }`]
+  host: {class: 'h-100'},
+  styles: [`
+    :host::ng-deep.ant-spin-container { height: 100% }
+    nz-spin { min-height: 100px }
+  `]
 })
 export class RequestWrapperComponent<T = any> implements OnChanges {
 

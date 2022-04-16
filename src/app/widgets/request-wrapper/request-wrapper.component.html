@@ -12,8 +12,8 @@
 </nz-result>
 
 <ng-template #contentTmp>
-  <nz-spin [nzSpinning]="isLoading">
-    <div *ngIf="isFirstDataLoaded" class="animated fadeIn">
+  <nz-spin class="h-100" [nzSpinning]="isLoading">
+    <div *ngIf="isFirstDataLoaded" class="animated fadeIn h-100">
       <ng-content></ng-content>
     </div>
   </nz-spin>

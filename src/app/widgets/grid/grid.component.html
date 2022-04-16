@@ -1,0 +1,44 @@
+<div class="d-flex align-items-center mb-2">
+  <nz-input-group nzSize="small"
+                  style="max-width: 300px"
+                  class="flex-grow-1"
+                  [nzSuffix]="suffixTmp">
+    <input #searchInput
+           nz-input
+           placeholder="Search ..."
+           [(ngModel)]="term"
+           (ngModelChange)="gridOptions.api.setQuickFilter(term)"/>
+    <ng-template #suffixTmp>
+      <i nz-icon
+         [nzTheme]="term ? 'fill' : 'outline'"
+         [nzType]="term ? 'close-circle' : 'search'"
+         [class.cursor-pointer]="term"
+         [class.ant-input-clear-icon]="term"
+         (click)="term = null; gridOptions.api.setQuickFilter(term)">
+      </i>
+    </ng-template>
+  </nz-input-group>
+  <div class="text-nowrap ml-auto">
+    <button nz-button nzSize="small"
+            class="ml-2"
+            [disabled]="!filtersCount"
+            (click)="gridOptions.api.setFilterModel(null)">
+      Filters ({{filtersCount || 0}})
+    </button>
+    <nz-tag class="ml-2">
+      Rows:<span class="ml-1" [@flash]="rowsCountFlash">{{rowsCount || 0}}</span>
+    </nz-tag>
+  </div>
+
+</div>
+
+<ag-grid-angular class="ag-theme-alpine flex-grow-1"
+                 [gridOptions]="gridOptions"
+                 [headerHeight]="30"
+                 [rowHeight]="30"
+                 [rowData]="rowData"
+                 (rowDataUpdated)="updateInfo()"
+                 (rowDataChanged)="updateInfo()"
+                 (firstDataRendered)="updateInfo(); searchInput.focus()"
+                 (filterChanged)="updateInfo()">
+</ag-grid-angular>

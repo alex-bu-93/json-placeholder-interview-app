@@ -11,7 +11,7 @@ export class PostsService {
   ) {
   }
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('posts')
+  getPosts$(): Observable<Post[]> {
+    return this.http.get<Post[]>('posts');
   }
 }

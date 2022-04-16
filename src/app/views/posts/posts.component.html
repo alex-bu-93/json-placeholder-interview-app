@@ -1,3 +1,5 @@
 <app-request-wrapper #postsRs [request$]="posts$">
-  <pre>{{postsRs.data | json}}</pre>
+  <app-grid [gridOptions]="postsGridOptions"
+            [rowData]="postsRs.data">
+  </app-grid>
 </app-request-wrapper>

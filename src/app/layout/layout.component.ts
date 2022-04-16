@@ -11,8 +11,9 @@ const LAYOUT_ROUTES = [
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styles: [`
-    ::ng-deep.ant-tabs-ink-bar { background-color: white }
+    :host::ng-deep.ant-tabs-ink-bar { background-color: white }
     nz-header { height: 52px; line-height: 52px }
+    nz-content { height: 1px }
     .container-fluid { max-width: 1000px }
   `]
 })

@@ -1,8 +1,48 @@
-<nz-layout>
-  <nz-header class="text-white">
-    JSON Placeholder Interview App
-  </nz-header>
-  <nz-content class="container-fluid px-2 py-3">
-    <router-outlet></router-outlet>
-  </nz-content>
+<nz-layout style="min-height: 100vh">
+  <nz-sider *ngIf="isMobile"
+            nzCollapsible
+            nzTheme="light"
+            [nzTrigger]="null"
+            [nzCollapsedWidth]="isMobile ? 0 : 80"
+            [(nzCollapsed)]="isCollapsed">
+    <ul nz-menu nzTheme="light"
+        [nzInlineCollapsed]="isCollapsed"
+        (nzClick)="isMobile && (isCollapsed = !isCollapsed)">
+      <li *ngFor="let route of LAYOUT_ROUTES" nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/', route.url]">
+          <i nz-icon [nzType]="route.icon"></i>
+          <span>{{route.label}}</span>
+        </a>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header class="px-0">
+      <div class="container-fluid align-items-center d-flex h-100">
+        <ng-container *ngIf="isMobile">
+          <button nz-button style="background-color: inherit" class="border-0">
+            <i nz-icon
+               class="text-white"
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+               (click)="isCollapsed = !isCollapsed">
+            </i>
+          </button>
+          <p nz-typography nzEllipsis nzContent="JSON Placeholder Interview App"
+             class="text-white mb-0">
+          </p>
+        </ng-container>
+        <nz-tabset *ngIf="!isMobile" nzLinkRouter [nzLinkExact]="false">
+          <nz-tab *ngFor="let route of LAYOUT_ROUTES">
+            <a *nzTabLink nz-tab-link class="text-white" [routerLink]="[route.url]">{{route.label}}</a>
+          </nz-tab>
+        </nz-tabset>
+      </div>
+    </nz-header>
+    <nz-content class="container-fluid py-3">
+      <router-outlet></router-outlet>
+    </nz-content>
+    <nz-footer>
+      By <a href="https://github.com/alex-bu-93">alex-bu</a>
+    </nz-footer>
+  </nz-layout>
 </nz-layout>

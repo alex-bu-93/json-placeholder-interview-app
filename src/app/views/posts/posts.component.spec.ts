@@ -1,27 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule }   from '@angular/common/http/testing';
-import { PostsComponent }            from './posts.component';
-import { PostsService }              from './posts.service';
+import { ComponentFixture }                                     from '@angular/core/testing';
+import { RequestWrapperComponent }                              from '@widgets/request-wrapper';
+import { MockBuilder, MockedDebugElement, MockRender, ngMocks } from 'ng-mocks';
+import { PostsComponent }                                       from './posts.component';
+import { PostsService }                                         from './posts.service';
+import { PostsModule }                                          from './posts.module';
 
 describe('PostsComponent', () => {
-  let component: PostsComponent;
-  let fixture: ComponentFixture<PostsComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      declarations: [PostsComponent],
-      providers: [PostsService]
-    }).compileComponents();
-  });
+  let fixture: ComponentFixture<PostsComponent>;
+  let requestWrapper: MockedDebugElement<RequestWrapperComponent>;
+
+  beforeEach(() => MockBuilder(PostsComponent, PostsModule).mock(PostsService));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture = MockRender(PostsComponent);
+    requestWrapper = ngMocks.find(RequestWrapperComponent);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
+
+  it('should have request wrapper', () => {
+    expect(requestWrapper.componentInstance).toBeTruthy();
+  });
+
 });

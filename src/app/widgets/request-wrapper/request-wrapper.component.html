@@ -1,0 +1,20 @@
+<ng-container *ngIf="request$ | async"></ng-container>
+
+<nz-result *ngIf="error else contentTmp"
+           nzStatus="error"
+           nzTitle="Looks like something went wrong"
+           [nzSubTitle]="error">
+  <div nz-result-extra>
+    <button nz-button nzType="primary"
+            (click)="request$ = getUpdatedStream(request$)"> Retry
+    </button>
+  </div>
+</nz-result>
+
+<ng-template #contentTmp>
+  <nz-spin [nzSpinning]="isLoading">
+    <div *ngIf="isFirstDataLoaded" class="animated fadeIn">
+      <ng-content></ng-content>
+    </div>
+  </nz-spin>
+</ng-template>

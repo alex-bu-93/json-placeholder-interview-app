@@ -1,5 +1,5 @@
-<app-request-wrapper #postsRs [request$]="albums$">
+<app-request-wrapper #albumsRs [request$]="albums$">
   <app-grid [gridOptions]="gridOptions"
-            [rowData]="postsRs.data">
+            [rowData]="albumsRs.data">
   </app-grid>
 </app-request-wrapper>

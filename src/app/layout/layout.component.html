@@ -2,6 +2,7 @@
   <nz-sider *ngIf="isMobile"
             nzCollapsible
             nzTheme="light"
+            [nzWidth]="140"
             [nzTrigger]="null"
             [nzCollapsedWidth]="isMobile ? 0 : 80"
             [(nzCollapsed)]="isCollapsed">
@@ -18,7 +19,7 @@
   </nz-sider>
   <nz-layout>
     <nz-header class="px-0">
-      <div class="container-fluid align-items-center d-flex h-100">
+      <div class="container-fluid align-items-center d-flex">
         <button *ngIf="isMobile" nz-button style="background-color: inherit" class="border-0">
           <i nz-icon
              class="text-white"
@@ -37,8 +38,10 @@
         </p>
       </div>
     </nz-header>
-    <nz-content class="container-fluid pt-3">
-      <router-outlet></router-outlet>
+    <nz-content class="overflow-auto pt-3">
+      <div class="container-fluid h-100">
+        <router-outlet></router-outlet>
+      </div>
     </nz-content>
     <nz-footer class="text-center py-2">
       By <a href="https://github.com/alex-bu-93">alex-bu</a>

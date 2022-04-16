@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Photo }      from '@widgets/paginated-photos';
 import { Observable } from 'rxjs';
-import { Photo }      from './photos.interfaces';
 
 @Injectable({providedIn: 'root'})
 export class PhotosService {
@@ -11,7 +11,11 @@ export class PhotosService {
   ) {
   }
 
-  getPosts$(term?: string): Observable<Photo[]> {
+  getPhotos$(): Observable<Photo[]> {
     return this.http.get<Photo[]>('photos');
+  }
+
+  getPhoto$(id: number): Observable<Photo> {
+    return this.http.get<Photo>(`photos/${id}`);
   }
 }

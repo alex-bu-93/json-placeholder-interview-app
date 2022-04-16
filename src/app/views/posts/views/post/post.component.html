@@ -1,0 +1,8 @@
+<app-request-wrapper #postRs [request$]="post$">
+  <nz-page-header *ngIf="postRs.data as post"
+                  nzBackIcon
+                  class="p-0"
+                  [nzTitle]="post.title | titlecase">
+    <nz-page-header-content>{{post.body}}</nz-page-header-content>
+  </nz-page-header>
+</app-request-wrapper>

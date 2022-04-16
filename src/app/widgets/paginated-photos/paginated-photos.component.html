@@ -1,0 +1,35 @@
+<div class="d-flex mb-3">
+  <nz-pagination nzSize="small"
+                 nzShowSizeChanger
+                 class="ml-auto text-nowrap"
+                 [(nzPageSize)]="pageSize"
+                 [(nzPageIndex)]="pageIndex"
+                 (nzPageSizeChange)="displayPhotos = getDisplayPhotos(photos)"
+                 (nzPageIndexChange)="displayPhotos = getDisplayPhotos(photos)"
+                 [nzTotal]="photos?.length">
+  </nz-pagination>
+</div>
+<div class="grid-cards">
+  <nz-card *ngFor="let photo of displayPhotos"
+           style="width: 150px"
+           class="mb-3"
+           [nzCover]="coverTmp">
+    <nz-card-meta [nzTitle]="photo.title"
+                  [nzDescription]="descriptionTmp">
+    </nz-card-meta>
+    <ng-template #descriptionTmp>
+      <a class="text-link" [routerLink]="['/photos', photo.id]">
+        <p class="text-right mb-0">
+          <span class="mr-2">Go to</span>
+          <i nz-icon nzType="arrow-right"></i>
+        </p>
+      </a>
+    </ng-template>
+    <ng-template #coverTmp>
+      <img nz-image
+           class="cursor-pointer"
+           [nzSrc]="photo.url"
+           [alt]="photo.url"/>
+    </ng-template>
+  </nz-card>
+</div>

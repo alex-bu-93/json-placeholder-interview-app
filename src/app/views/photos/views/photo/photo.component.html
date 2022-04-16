@@ -1,0 +1,17 @@
+<app-request-wrapper #photoRs [request$]="photo$">
+  <ng-container *ngIf="photoRs.data as photo">
+    <nz-page-header nzBackIcon
+                    class="p-0"
+                    [nzTitle]="photo.title | titlecase">
+      <nz-page-header-content>
+        <a class="text-link" [routerLink]="['/albums', photo.albumId]">View Album</a>
+      </nz-page-header-content>
+    </nz-page-header>
+    <div class="d-flex justify-content-center p-4">
+      <img style="max-width: 600px"
+           class="w-100"
+           [alt]="photo.url"
+           [src]="photo.url"/>
+    </div>
+  </ng-container>
+</app-request-wrapper>

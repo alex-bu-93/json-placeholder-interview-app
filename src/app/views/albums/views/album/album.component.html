@@ -1,0 +1,12 @@
+<app-request-wrapper #albumRs [request$]="album$">
+  <nz-page-header nzBackIcon
+                  class="p-0"
+                  [nzTitle]="albumRs.data?.title | titlecase">
+    <nz-page-header-content>By user: {{albumRs.data?.userId}}</nz-page-header-content>
+  </nz-page-header>
+  <app-request-wrapper #albumPhotosRs [request$]="albumPhotos$">
+    <app-paginated-photos *ngIf="albumPhotosRs.data as photos"
+                          [photos]="photos">
+    </app-paginated-photos>
+  </app-request-wrapper>
+</app-request-wrapper>

@@ -28,7 +28,7 @@ describe('PostsComponent', () => {
     expect(ngMocks.find(GridComponent).componentInstance).toBeTruthy();
   });
 
-  it('request wrapper should get posts observable', () => {
+  it('request wrapper should get observable', () => {
     ngMocks.find(RequestWrapperComponent).componentInstance.request$.subscribe(res => expect(res).toEqual(FAKE_POSTS));
   });
 

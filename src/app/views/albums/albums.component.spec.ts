@@ -28,7 +28,7 @@ describe('AlbumsComponent', () => {
     expect(ngMocks.find(GridComponent).componentInstance).toBeTruthy();
   });
 
-  it('request wrapper should get albums observable', () => {
+  it('request wrapper should get observable', () => {
     ngMocks.find(RequestWrapperComponent).componentInstance.request$.subscribe(res => expect(res).toEqual(FAKE_ALBUMS));
   });
 

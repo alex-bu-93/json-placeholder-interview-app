@@ -1,6 +1,7 @@
 @import './variables';
 @import '~node_modules/bootstrap/scss/bootstrap';
 
+.bg-inherit { background: inherit !important }
 .text-link {
   color: $primary;
   cursor: pointer;

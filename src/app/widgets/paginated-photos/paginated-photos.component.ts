@@ -9,7 +9,7 @@ import { Photo }                                             from './photo.inter
     .grid-cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, 150px);
-      justify-content: space-between;
+      justify-content: space-around;
     }
   `]
 })
@@ -18,7 +18,7 @@ export class PaginatedPhotosComponent implements OnInit {
   @Input() photos: Photo[];
 
   pageIndex = 1;
-  pageSize = 10;
+  pageSize = 20;
 
   displayPhotos: Photo[];
 

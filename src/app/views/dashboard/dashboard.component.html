@@ -1,1 +1,32 @@
-<p>dashboard works!</p>
+<app-request-wrapper #dashboardRs [request$]="dashboard$">
+  <nz-page-header class="bg-light p-0 mb-3">
+    <nz-page-header-title class="mb-3">App Dashboard</nz-page-header-title>
+    <nz-page-header-content class="d-flex p-0">
+      <nz-statistic nzTitle="Posts" class="mr-3" [nzValue]="dashboardRs.data?.lastPosts?.length * 2"></nz-statistic>
+      <nz-statistic nzTitle="Photos" class="mr-3" [nzValue]="dashboardRs.data?.lastPhotos?.length * 3"></nz-statistic>
+      <nz-statistic nzTitle="Albums" class="mr-3" [nzValue]="albumsCount"></nz-statistic>
+    </nz-page-header-content>
+  </nz-page-header>
+
+  <nz-tabset [nzAnimated]="false">
+    <nz-tab *ngIf="dashboardRs.data?.lastPosts as posts" [nzTitle]="'Latest Posts' + (posts.length ? ' (' + posts.length + ')' : '')">
+      <ng-template nz-tab>
+        <ul class="animated fadeIn list-group list-group-flush">
+          <li *ngFor="let post of posts" class="list-group-item bg-inherit px-0 py-3">
+            <a class="text-link" [routerLink]="['/posts', post.id]">
+              <p nz-typography nzEllipsis class="mb-0" [nzContent]="post.title"></p>
+            </a>
+            <p nz-typography nzEllipsis class="text-muter font-italic mb-0" [nzContent]="post.body"></p>
+          </li>
+        </ul>
+      </ng-template>
+    </nz-tab>
+    <nz-tab *ngIf="dashboardRs.data?.lastPhotos as photos" [nzTitle]="'Latest Photos' + (photos.length ? ' (' + photos.length + ')' : '')">
+      <ng-template nz-tab>
+        <div class="animated fadeIn pt-3">
+          <app-paginated-photos [photos]="photos"></app-paginated-photos>
+        </div>
+      </ng-template>
+    </nz-tab>
+  </nz-tabset>
+</app-request-wrapper>

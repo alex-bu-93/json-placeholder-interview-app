@@ -1,0 +1,36 @@
+<app-request-wrapper #usersRs [request$]="users$">
+  <app-grid [gridOptions]="gridOptions"
+            [rowData]="usersRs.data">
+  </app-grid>
+</app-request-wrapper>
+
+
+<nz-modal [nzTitle]="'User' + (curUser?.name ? ': ' + curUser.name : '')"
+          [nzStyle]="{top: '20px'}"
+          [nzMaskClosable]="false"
+          [nzOkText]="null"
+          [(nzVisible)]="isUserModalVisible"
+          (nzOnCancel)="isUserModalVisible = false">
+  <ng-container *nzModalContent>
+    <ng-container *ngIf="curUser">
+      <nz-descriptions [nzColumn]="2">
+        <nz-descriptions-item nzTitle="Name" [nzSpan]="1">{{curUser.name}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="User Name" [nzSpan]="1">{{curUser.username}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Email" [nzSpan]="1">{{curUser.email}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Phone" [nzSpan]="1">{{curUser.phone}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Website" [nzSpan]="1">{{curUser.website}}</nz-descriptions-item>
+      </nz-descriptions>
+      <nz-descriptions nzTitle="Company" [nzColumn]="2">
+        <nz-descriptions-item nzTitle="Name" [nzSpan]="1">{{curUser.company?.name}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="BS" [nzSpan]="1">{{curUser.company?.bs}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Catch Phrase" [nzSpan]="2">{{curUser.company?.catchPhrase}}</nz-descriptions-item>
+      </nz-descriptions>
+      <nz-descriptions nzTitle="Address" [nzColumn]="2">
+        <nz-descriptions-item nzTitle="City" [nzSpan]="1">{{curUser.address?.city}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Street" [nzSpan]="1">{{curUser.address?.street}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Suite" [nzSpan]="1">{{curUser.address?.suite}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Zipcode" [nzSpan]="1">{{curUser.address?.zipcode}}</nz-descriptions-item>
+      </nz-descriptions>
+    </ng-container>
+  </ng-container>
+</nz-modal>

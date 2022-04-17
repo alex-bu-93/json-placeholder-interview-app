@@ -5,7 +5,8 @@ const LAYOUT_ROUTES = [
   {url: 'dashboard', label: 'Dashboard', icon: 'dashboard'},
   {url: 'posts', label: 'Posts', icon: 'edit'},
   {url: 'albums', label: 'Albums', icon: 'book'},
-  {url: 'photos', label: 'Photos', icon: 'picture'}
+  {url: 'photos', label: 'Photos', icon: 'picture'},
+  {url: 'users', label: 'Users', icon: 'usergroup-add'}
 ];
 
 @Component({

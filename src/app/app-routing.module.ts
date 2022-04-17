@@ -9,7 +9,8 @@ const routes: Routes = [
       {path: 'dashboard', loadChildren: () => import('./views/dashboard').then(m => m.DashboardModule)},
       {path: 'posts', loadChildren: () => import('./views/posts').then(m => m.PostsModule)},
       {path: 'albums', loadChildren: () => import('./views/albums').then(m => m.AlbumsModule)},
-      {path: 'photos', loadChildren: () => import('./views/photos').then(m => m.PhotosModule)}
+      {path: 'photos', loadChildren: () => import('./views/photos').then(m => m.PhotosModule)},
+      {path: 'users', loadChildren: () => import('./views/users').then(m => m.UsersModule)},
     ]
   }
 ];

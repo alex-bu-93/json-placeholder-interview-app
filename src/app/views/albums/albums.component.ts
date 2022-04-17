@@ -1,21 +1,11 @@
-import { ChangeDetectionStrategy, Component }      from '@angular/core';
-import { FrameworkComponent, frameworkComponents } from '@widgets/grid/renderers';
-import { LinkCellParams }                          from '@widgets/grid/renderers/link-cell-renderer';
-import { GridOptions, ICellRendererParams }        from 'ag-grid-community';
-import { AlbumsService }                           from './albums.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FrameworkComponent }                 from '@widgets/grid/renderers';
+import { LinkCellParams }                     from '@widgets/grid/renderers/link-cell-renderer';
+import { extendGridOptions }                  from '@widgets/grid/functions/extend-grid-options';
+import { GridOptions, ICellRendererParams }   from 'ag-grid-community';
+import { AlbumsService }                      from './albums.service';
 
 const GRID_OPTIONS: GridOptions = {
-  animateRows: true,
-  suppressDragLeaveHidesColumns: true,
-  enableCellTextSelection: true,
-  suppressRowClickSelection: true,
-  popupParent: document.querySelector('body'),
-  defaultColDef: {
-    sortable: true,
-    resizable: true,
-    enableCellChangeFlash: true,
-    filterParams: {buttons: ['reset']}
-  },
   columnDefs: [
     {
       field: 'id',
@@ -28,8 +18,7 @@ const GRID_OPTIONS: GridOptions = {
     },
     {field: 'userId', headerName: 'User ID', filter: 'agNumberColumnFilter', width: 142, minWidth: 100},
     {field: 'title', headerName: 'Title', filter: 'agTextColumnFilter', minWidth: 300, flex: 1}
-  ],
-  frameworkComponents
+  ]
 };
 
 @Component({
@@ -39,7 +28,7 @@ const GRID_OPTIONS: GridOptions = {
 })
 export class AlbumsComponent {
 
-  gridOptions = GRID_OPTIONS;
+  gridOptions = extendGridOptions(GRID_OPTIONS);
   albums$ = this.albumsService.getAlbums$();
 
   constructor(

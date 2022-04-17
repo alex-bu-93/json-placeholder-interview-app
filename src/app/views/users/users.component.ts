@@ -17,6 +17,7 @@ const GRID_OPTIONS: GridOptions = {
           width: 110,
           minWidth: 72,
           cellClass: ['text-link', 'cursor-pointer'],
+          pinned: 'left',
           onCellClicked: p => p.context.openModal(p.data)
         },
         {field: 'name', filter: 'agTextColumnFilter', width: 142, minWidth: 100},

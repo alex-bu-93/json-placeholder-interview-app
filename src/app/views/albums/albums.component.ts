@@ -14,6 +14,7 @@ const GRID_OPTIONS: GridOptions = {
       width: 110,
       minWidth: 72,
       cellRenderer: FrameworkComponent.LinkCellRenderer,
+      pinned: 'left',
       cellRendererParams: (p: ICellRendererParams) => ({routerLink: ['/albums', p.value]} as LinkCellParams)
     },
     {field: 'userId', headerName: 'User ID', filter: 'agNumberColumnFilter', width: 142, minWidth: 100},

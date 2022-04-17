@@ -13,6 +13,7 @@ const GRID_OPTIONS: GridOptions = {
       filter: 'agNumberColumnFilter',
       width: 110,
       minWidth: 72,
+      pinned: 'left',
       cellRenderer: FrameworkComponent.LinkCellRenderer,
       cellRendererParams: (p: ICellRendererParams) => ({routerLink: ['/posts', p.value]} as LinkCellParams)
     },

@@ -73,5 +73,6 @@ export class UsersComponent {
   openModal(user: User) {
     this.curUser = user;
     this.isUserModalVisible = true;
+    this.cdr.markForCheck();
   }
 }

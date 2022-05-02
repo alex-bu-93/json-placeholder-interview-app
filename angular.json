@@ -110,9 +110,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "json-placeholder-interview-app"
+  "defaultProject": "json-placeholder-interview-app",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

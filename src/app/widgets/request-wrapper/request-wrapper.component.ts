@@ -7,8 +7,8 @@ import { catchError, tap }                                                      
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-request-wrapper',
   templateUrl: './request-wrapper.component.html',
-  host: {class: 'h-100'},
   styles: [`
+    :host { height: 100% }
     :host::ng-deep.ant-spin-container { height: 100% }
     nz-spin { min-height: 100px }
   `]
@@ -25,7 +25,7 @@ export class RequestWrapperComponent<T = any> implements OnChanges {
   error: string;
 
   constructor(
-    private cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef
   ) {
   }
 
@@ -37,9 +37,14 @@ export class RequestWrapperComponent<T = any> implements OnChanges {
     this.error = null;
     this.isLoading = true;
     return request$?.pipe(
-      tap(data => { this.data = data; this.isFirstDataLoaded = true; }),
+      tap(data => this.onDataLoaded(data)),
       catchError((err: HttpErrorResponse) => { this.error = err.message; return throwError(() => err); }),
       finalize(() => { this.isLoading = false; this.cdr.markForCheck(); })
     );
+  }
+
+  onDataLoaded(data: T) {
+    this.data = data;
+    this.isFirstDataLoaded = true;
   }
 }

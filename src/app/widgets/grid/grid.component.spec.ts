@@ -32,6 +32,7 @@ describe('GridComponent', () => {
     };
     fixture.detectChanges();
     fixture.componentInstance.updateInfo();
+    fixture.componentInstance.cdr.markForCheck();
     fixture.detectChanges();
     expect(ngMocks.find('button').nativeElement.innerText).toContain('' + Object.keys(FAKE_FILTER_MODEL).length);
   });

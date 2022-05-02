@@ -25,14 +25,11 @@ export class LinkCellRendererComponent implements ICellRendererAngularComp {
   params: LinkCellParams;
 
   constructor(
-    private cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef
   ) {
   }
 
   refresh = (): boolean => false;
 
-  agInit(params: LinkCellParams) {
-    this.params = params;
-    this.cdr.markForCheck();
-  }
+  agInit = (params: LinkCellParams) => this.params = params;
 }

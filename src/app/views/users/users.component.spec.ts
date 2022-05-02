@@ -43,6 +43,7 @@ describe('UsersComponent', () => {
     const modalDirective = ngMocks.findInstance(ngMocks.find(NzModalComponent), NzModalContentDirective);
     if (isMockOf(modalDirective, NzModalContentDirective, 'd')) modalDirective.__render();
     fixture.componentInstance.openModal(FAKE_USERS[0]);
+    fixture.componentInstance.cdr.markForCheck();
     fixture.detectChanges();
     expect(ngMocks.findAll(NzDescriptionsComponent).length).toBeGreaterThan(0);
   });

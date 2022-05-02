@@ -19,6 +19,7 @@ describe('LinkCellRendererComponent', () => {
   it('should render a-tag after agInit called', () => {
     expect(ngMocks.findAll('a').length).toBe(0);
     fixture.componentInstance.agInit(FAKE_LINK_CELL_PARAMS);
+    fixture.componentInstance.cdr.markForCheck();
     fixture.detectChanges();
     expect(ngMocks.find('a')).toBeTruthy();
   });

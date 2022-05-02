@@ -7,8 +7,10 @@ import { flashAnimation }                                               from 'an
   selector: 'app-grid',
   templateUrl: './grid.component.html',
   animations: [flashAnimation()],
-  host: {class: 'flex-grow-1 d-flex flex-column h-100'},
-  styles: ['nz-tag { line-height: 22px; min-width: 72px }']
+  styles: [`
+    :host { display: flex; flex-grow: 1; flex-direction: column; height: 100% }
+    nz-tag { line-height: 22px; min-width: 72px }`
+  ]
 })
 export class GridComponent {
 
@@ -23,7 +25,7 @@ export class GridComponent {
   rowsCountFlash: boolean;
 
   constructor(
-    private cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef
   ) {
   }
 
@@ -34,6 +36,5 @@ export class GridComponent {
     if (rowsCount === this.rowsCount) return;
     this.rowsCount = rowsCount;
     this.rowsCountFlash = !this.rowsCountFlash;
-    this.cdr.markForCheck();
   }
 }

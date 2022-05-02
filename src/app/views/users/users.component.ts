@@ -64,7 +64,7 @@ export class UsersComponent {
   curUser: User;
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    public cdr: ChangeDetectorRef,
     private usersService: UsersService
   ) {
     this.gridOptions.context = this;
@@ -73,6 +73,5 @@ export class UsersComponent {
   openModal(user: User) {
     this.curUser = user;
     this.isUserModalVisible = true;
-    this.cdr.markForCheck();
   }
 }
